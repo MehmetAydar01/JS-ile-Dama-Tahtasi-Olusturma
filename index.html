@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dama Tahtası</title>
+    <!-- CSS -->
+    <style>
+        #buyuk_tahta {
+            width: 480px;
+            height: 480px;
+            background-color: bisque;
+            border-style: double;
+            border-color: black;
+            margin: 0 auto;
+        }
+
+        .kucuk_tahta {
+            width: 52px;
+            height: 52px;
+            background-color: cornsilk;
+            color: brown;
+            line-height: 52px;
+            text-align: center;
+            border-color: crimson;
+            border-style: double;
+            float: left;
+            margin: 1px;
+        }
+
+        .koyu_renk {
+            background-color: brown;
+            color: cornsilk;
+        }
+
+        input[type="button"] {
+            color: purple;
+            font-size: 24px;
+            background-color: pink;
+            cursor: pointer;
+            border: 3px double red;
+            transition: all .6s ease;
+        }
+
+        input[type="button"]:hover {
+            color: pink;
+            background-color: purple;
+            border: 3px dashed yellow;
+        }
+
+    </style>
+</head>
+<body>
+
+    <input type="button" value="Tahta Oluştur" onclick="dama_tahtasi_olustur()">
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function dama_tahtasi_olustur() {
+            
+            let buyuk_tahta_deg = document.createElement("div");
+            buyuk_tahta_deg.id = "buyuk_tahta";
+            let renk = 0;
+            let count = 1;
+
+            for (let satir = 1; satir < 9; satir++) {
+                
+                for (let sutun = 1; sutun < 9; sutun++) {
+                
+                    let yazisi = document.createTextNode(satir +"/"+ sutun);
+                    let kucuk_tahta_deg = document.createElement("div");
+                    kucuk_tahta_deg.appendChild(yazisi);
+                    kucuk_tahta_deg.className = "kucuk_tahta";
+                    renk++;
+                    if( renk %2 == 0 ){kucuk_tahta_deg.className += " koyu_renk";}
+                    buyuk_tahta_deg.appendChild(kucuk_tahta_deg);
+
+                }
+                renk++;
+
+            }
+
+            document.body.appendChild(buyuk_tahta_deg); 
+
+        }
+
+    </script>
+
+</body>
+</html>
